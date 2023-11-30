@@ -28,6 +28,9 @@ function doPost(e) {
   logs.appendRow([date,userID,messageText]); // 日時、userID、送信された内容をログとして残す
   sublogs.appendRow([date,userID]); // 日時、userID、送信された内容をログとして残す
 
+  if (typeof reply_token === 'underfined') {
+    return;
+  }
   //メッセージ解析してチュートリアルを始めるか解析
   if (messageText == 'スタート'){ // 「スタート」と入力されたら
     notify(reply_token); // チュートリアル開始
