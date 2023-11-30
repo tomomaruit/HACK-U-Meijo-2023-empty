@@ -1,3 +1,9 @@
+/*
+main.gsは常に正常に動作する状態を保つようにする．
+編集を行う際はコンフリクトの発生を避けるため
+各自オフライン上のエディタにコードをコピーするか、ファイルを複製して編集すること．
+*/
+
 // アクセストークン,URL,スプレッドシートIDを定義 
 const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN"); // LINE Botのアクセストークン
 const LINE_URL = 'https://api.line.me/v2/bot/message/reply'; // LINE Bot の要件に沿ったリンクを定義
@@ -31,6 +37,7 @@ function doPost(e) {
   //メッセージ解析してチュートリアルを始めるか解析
   if (messageText == 'スタート'){ // 「スタート」と入力されたら
     notify(reply_token); // チュートリアル開始
+    sublogs.appendRow(['スタート']);
   }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
@@ -73,7 +80,7 @@ function judgetoolno(splittext,reply_token){
 
   else if (splittext[0] == '2'){ // もし2なら検索方法2を起動
     const buildname = splittext[1]; // 建物名抽出
-    const whatdatetime = splittext[2]; // 部屋番号抽出
+    const whatdatetime = splittext[2]; // 曜日時限抽出
     const hairetsu = username1.length; // 配列の長さを定義
     for (i = 0; i <= hairetsu ; i++){
       if (buildname == username1[i]){ // LINEのメッセージと配列内の要素が一致したら
@@ -99,7 +106,35 @@ function judgetoolno(splittext,reply_token){
     }
   }
   else if (splittext[0] == '3'){
-    // 起動
+    const buildname = splittext[1]; // 建物名抽出
+    const whatdatetime = splittext[2]; // 曜日時限抽出
+    const roomname = splittext[3]; // 教室番号抽出
+    const hairetsu = username1.length; // 配列の長さを定義
+    for (i = 0; i <= hairetsu ; i++){
+      if (buildname == username1[i]){ // LINEのメッセージと配列内の要素が一致したら
+        const searchsheet = ss.getSheetByName(sheetname[i]); // 検索設定シート定義
+        sublogs.appendRow(['検索方法3','検索シート名：',buildname,'曜日時限：',whatdatetime,'教室番号：',roomname]); // 動作検証用のログ記入
+        let result = []; // 結果保持用の配列
+        for (i = 4 ; i<= 38; i++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
+          let sheetdatename = searchsheet.getRange(1,i).getValue(); // スプシから取得した曜日時限
+          if (whatdatetime == sheetdatename){ // LINEの送信内容と一致した時
+            for (j = 2; j <= 40 ; j ++){ // 縦方向検索に切替
+              let sheetclasscode = searchsheet.getRange(j,2).getValue(); // 検索対象セルの内容定義
+              if (sheetclasscode == roomname){ // 検索結果が空白なら
+                let classno = searchsheet.getRange(j,i).getValue(); // 同行の教室名取得
+                result.push(classno);
+              }
+            }
+          }
+        }
+        sublogs.appendRow(result); 
+        let message = result.join('\n'); 
+        sendLINE(reply_token,message); 
+      }
+    }
+
+
+    
   }
   else {
     errorcode = 100;
