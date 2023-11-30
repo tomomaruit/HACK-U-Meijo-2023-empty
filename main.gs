@@ -1,9 +1,3 @@
-/*
-main.gsは常に正常に動作する状態を保つようにする．
-編集を行う際はコンフリクトの発生を避けるため
-各自オフライン上のエディタにコードをコピーするか、ファイルを複製して編集すること．
-*/
-
 // アクセストークン,URL,スプレッドシートIDを定義 
 const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN"); // LINE Botのアクセストークン
 const LINE_URL = 'https://api.line.me/v2/bot/message/reply'; // LINE Bot の要件に沿ったリンクを定義
@@ -128,7 +122,8 @@ function judgetoolno(splittext,reply_token){
           }
         }
         sublogs.appendRow(result); 
-        let message = result.join('\n'); 
+        let codemessage = result.join('\n'); 
+        const message = 'https://gkmsyllabus.meijo-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2023&value(semekikn)=1&value(kougicd)=' + codemessage
         sendLINE(reply_token,message); 
       }
     }
