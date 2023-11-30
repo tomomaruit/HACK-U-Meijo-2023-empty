@@ -45,17 +45,15 @@ function judgetoolno(splittext,reply_token){
     const buildname = splittext[1]; // 建物名抽出
     const roomname = splittext[2]; // 部屋番号抽出
     const hairetsu = username1.length; // 配列の長さを定義
-    for (i = 0; i <= hairetsu ; i++){ // この部分更新済
+    for (i = 0; i <= hairetsu ; i++){
       if (buildname == username1[i]){ // LINEのメッセージと配列内の要素が一致したら
         const searchsheet = ss.getSheetByName(sheetname[i]); // 検索対象シートを定義
         sublogs.appendRow(['検索方法1','検索シート名：',sheetname[i],'教室番号：',roomname]); // 動作検証用のログ記入
         let result = []; // 結果保持用の配列
         const lastrow = searchsheet.getLastRow(); // 最終行が何行目なのか取得する
-        for (i = 2 ; i<= lastrow; i++){ // 縦方向検索に切替
+        for (i = 2 ; i<= lastrow; i++){ // 縦方向検索
           let searchcel = 'B' + i; // 検索するセルは確実にB列に存在するので形式指定する
-          //Logger.log(searchcel); // 検証用に出力
           let sheetroomname = searchsheet.getRange(searchcel).getValue();
-          //Logger.log(sheetroomname);
           if (roomname == sheetroomname){
             for (j = 4; j <= 38 ; j ++){ //横方向探索に切替
               let sheetclasscode = searchsheet.getRange(i,j).getValue(); // 検索対象セルの内容定義
@@ -74,30 +72,29 @@ function judgetoolno(splittext,reply_token){
   }
 
   else if (splittext[0] == '2'){ // もし2なら検索方法2を起動
-    //logs.appendRow(['2検出したここまできてる']); // userIDと送信内容をログとして残す
     const buildname = splittext[1]; // 建物名抽出
     const whatdatetime = splittext[2]; // 部屋番号抽出
     const hairetsu = username1.length; // 配列の長さを定義
     for (i = 0; i <= hairetsu ; i++){
-      if (buildname == username1[i]){
-        const searchsheet = ss.getSheetByName(sheetname[i]); // 設定シート定義
+      if (buildname == username1[i]){ // LINEのメッセージと配列内の要素が一致したら
+        const searchsheet = ss.getSheetByName(sheetname[i]); // 検索設定シート定義
         sublogs.appendRow(['検索方法2','検索シート名：',buildname,'検索時間：',whatdatetime]); // 動作検証用のログ記入
         let result = []; // 結果保持用の配列
         for (i = 4 ; i<= 38; i++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
           let sheetdatename = searchsheet.getRange(1,i).getValue(); // スプシから取得した曜日時限
           if (whatdatetime == sheetdatename){ // LINEの送信内容と一致した時
             for (j = 2; j <= 40 ; j ++){ // 縦方向検索に切替
-              let sheetclasscode = searchsheet.getRange(j,i).getValue();
-              if (sheetclasscode === ''){
-                let nullcellname = searchsheet.getRange(j,2).getValue();
+              let sheetclasscode = searchsheet.getRange(j,i).getValue(); // 検索対象セルの内容定義
+              if (sheetclasscode === ''){ // 検索結果が空白なら
+                let nullcellname = searchsheet.getRange(j,2).getValue(); // 同行の教室名取得
                 result.push(nullcellname);
               }
             }
           }
         }
-        sublogs.appendRow(result);
-        let message = result.join('\n');
-        sendLINE(reply_token,message);
+        sublogs.appendRow(result); 
+        let message = result.join('\n'); 
+        sendLINE(reply_token,message); 
       }
     }
   }
@@ -112,14 +109,13 @@ function judgetoolno(splittext,reply_token){
 
 // 説明用関数
 function notify(reply_token) {
-  // シート名の定義
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
   const ex1 = set_sheet.getRange("B3").getValue();
   const ex2 = set_sheet.getRange("B4").getValue();
   const ex3 = set_sheet.getRange("B5").getValue();
-
+  // LINE側の要件に合わせる
   const option = {
     'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -156,7 +152,7 @@ function notify(reply_token) {
   return;
 }
 
-// エラー用関数
+// エラー用に使用する関数
 function error(errorcode,reply_token) {
   const option = {
     'headers': {
