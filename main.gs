@@ -92,13 +92,13 @@ function judgetoolno(splittext,reply_token){
         let result = []; // 結果保持用の配列
         // new
         const lastrow = searchsheet.getLastRow(); // 最終行が何行目なのか取得する
-        for (i = 4 ; i<= 38; i++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
-          let sheetdatename = searchsheet.getRange(1,i).getValue(); // スプシから取得した曜日時限
+        for (j = 4 ; j<= 38; j++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
+          let sheetdatename = searchsheet.getRange(1,j).getValue(); // スプシから取得した曜日時限
           if (whatdatetime == sheetdatename){ // LINEの送信内容と一致した時
-            for (j = 2; j <= lastrow ; j ++){ // 縦方向検索に切替
-              let sheetclasscode = searchsheet.getRange(j,i).getValue(); // 検索対象セルの内容定義
+            for (k = 2; k <= lastrow ; k ++){ // 縦方向検索に切替
+              let sheetclasscode = searchsheet.getRange(k,j).getValue(); // 検索対象セルの内容定義
               if (sheetclasscode === ''){ // 検索結果が空白なら
-                let nullcellname = searchsheet.getRange(j,2).getValue(); // 同行の教室名取得
+                let nullcellname = searchsheet.getRange(k,2).getValue(); // 同行の教室名取得
                 result.push(nullcellname);
               }
             }
@@ -122,13 +122,13 @@ function judgetoolno(splittext,reply_token){
         let result = []; // 結果保持用の配列_これほんとに必要かな
         //new
         const lastrow = searchsheet.getLastRow(); // 最終行が何行目なのか取得する
-        for (k = 4 ; k<= 38; k++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
-          let sheetdatename = searchsheet.getRange(1,k).getValue(); // スプシから取得した曜日時限
+        for (j = 4 ; j<= 38; j++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
+          let sheetdatename = searchsheet.getRange(1,j).getValue(); // スプシから取得した曜日時限
           if (whatdatetime == sheetdatename){ // LINEの送信内容と一致した時
-            for (j = 2; j <= lastrow ; j ++){ // 縦方向検索に切替
-              let sheetclasscode = searchsheet.getRange(j,2).getValue(); // 検索対象セルの内容定義
+            for (k = 2; k <= lastrow ; k ++){ // 縦方向検索に切替
+              let sheetclasscode = searchsheet.getRange(k,2).getValue(); // 検索対象セルの内容定義
               if (sheetclasscode == roomname){ // 部屋番号一致
-                let classno = searchsheet.getRange(j,k).getValue(); // 同行の教室名取得
+                let classno = searchsheet.getRange(k,j).getValue(); // 同行の教室名取得
                 result.push(classno);
               }
             }
