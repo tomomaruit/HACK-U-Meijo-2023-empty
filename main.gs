@@ -119,14 +119,16 @@ function judgetoolno(splittext,reply_token){
       if (buildname == username1[i]){ // LINEのメッセージと配列内の要素が一致したら
         const searchsheet = ss.getSheetByName(sheetname[i]); // 検索設定シート定義
         sublogs.appendRow(['検索方法3','検索シート名：',buildname,'曜日時限：',whatdatetime,'教室番号：',roomname]); // 動作検証用のログ記入
-        let result = []; // 結果保持用の配列
-        for (i = 4 ; i<= 38; i++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
-          let sheetdatename = searchsheet.getRange(1,i).getValue(); // スプシから取得した曜日時限
+        let result = []; // 結果保持用の配列_これほんとに必要かな
+        //new
+        const lastrow = searchsheet.getLastRow(); // 最終行が何行目なのか取得する
+        for (k = 4 ; k<= 38; k++){ // 4と38は不変かつどのシートでも不変なので変数で呼び出ししない
+          let sheetdatename = searchsheet.getRange(1,k).getValue(); // スプシから取得した曜日時限
           if (whatdatetime == sheetdatename){ // LINEの送信内容と一致した時
-            for (j = 2; j <= 40 ; j ++){ // 縦方向検索に切替
+            for (j = 2; j <= lastrow ; j ++){ // 縦方向検索に切替
               let sheetclasscode = searchsheet.getRange(j,2).getValue(); // 検索対象セルの内容定義
-              if (sheetclasscode == roomname){ // 検索結果が空白なら
-                let classno = searchsheet.getRange(j,i).getValue(); // 同行の教室名取得
+              if (sheetclasscode == roomname){ // 部屋番号一致
+                let classno = searchsheet.getRange(j,k).getValue(); // 同行の教室名取得
                 result.push(classno);
               }
             }
