@@ -61,14 +61,14 @@ function judgetoolno(splittext,reply_token){
         sublogs.appendRow(['検索方法1','検索シート名：',sheetname[i],'教室番号：',roomname]); // 動作検証用のログ記入
         let result = []; // 結果保持用の配列
         const lastrow = searchsheet.getLastRow(); // 最終行が何行目なのか取得する
-        for (i = 2 ; i<= lastrow; i++){ // 縦方向検索
-          let searchcel = 'B' + i; // 検索するセルは確実にB列に存在するので形式指定する
+        for (j = 2 ; j<= lastrow; j++){ // 縦方向検索
+          let searchcel = 'B' + j; // 検索するセルは確実にB列に存在するので形式指定する
           let sheetroomname = searchsheet.getRange(searchcel).getValue();
           if (roomname == sheetroomname){
-            for (j = 4; j <= 38 ; j ++){ //横方向探索に切替
-              let sheetclasscode = searchsheet.getRange(i,j).getValue(); // 検索対象セルの内容定義
+            for (k = 4; k <= 38 ; k ++){ //横方向探索に切替
+              let sheetclasscode = searchsheet.getRange(j,k).getValue(); // 検索対象セルの内容定義
               if (sheetclasscode === ''){ // 検索結果が空白なら
-                let nullcellname = searchsheet.getRange(1,j).getValue(); // 同列の一行目教室名取得
+                let nullcellname = searchsheet.getRange(1,k).getValue(); // 同列の一行目教室名取得
                 result.push(nullcellname); // 結果用配列の末尾に追加
               }
             }
