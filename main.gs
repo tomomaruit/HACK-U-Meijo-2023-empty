@@ -4,6 +4,8 @@ main.gsは常に正常に動作する状態を保つようにする．
 各自オフライン上のエディタにコードをコピーするか、ファイルを複製して編集すること．
 */
 
+
+
 // アクセストークン,URL,スプレッドシートIDを定義 
 const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN"); // LINE Botのアクセストークン
 const LINE_URL = 'https://api.line.me/v2/bot/message/reply'; // LINE Bot の要件に沿ったリンクを定義
