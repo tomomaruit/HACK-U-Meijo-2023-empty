@@ -44,6 +44,10 @@ function doPost(e) {
     empty(reply_token);
     sublogs.appendRow(['説明_empty']);
   }
+  else if (messageText == '> シラバス検索'){
+    syllabus(reply_token);
+    sublogs.appendRow(['説明_empty']);
+  }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
     judgetoolno(splittext,reply_token); // 配列0番目検証関数へ移行
