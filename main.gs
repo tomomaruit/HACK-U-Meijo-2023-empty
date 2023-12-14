@@ -1,11 +1,3 @@
-/*
-main.gsは常に正常に動作する状態を保つようにする．
-編集を行う際はコンフリクトの発生を避けるため
-各自オフライン上のエディタにコードをコピーするか、ファイルを複製して編集すること．
-*/
-
-
-
 // アクセストークン,URL,スプレッドシートIDを定義 
 const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN"); // LINE Botのアクセストークン
 const LINE_URL = 'https://api.line.me/v2/bot/message/reply'; // LINE Bot の要件に沿ったリンクを定義
@@ -101,7 +93,8 @@ function judgetoolno(splittext,reply_token){
               let sheetclasscode = searchsheet.getRange(k,j).getValue(); // 検索対象セルの内容定義
               if (sheetclasscode === ''){ // 検索結果が空白なら
                 let nullcellname = searchsheet.getRange(k,2).getValue(); // 同行の教室名取得
-                result.push(nullcellname);
+                let information = searchsheet.getRange(k,3).getValue();
+                result.push(nullcellname + "(" + information + ")");
               }
             }
           }
@@ -142,10 +135,8 @@ function judgetoolno(splittext,reply_token){
         sendLINE(reply_token,message); 
       }
     }
-
-
-    
   }
+
   else {
     errorcode = 100;
     error(errorcode,reply_token);
