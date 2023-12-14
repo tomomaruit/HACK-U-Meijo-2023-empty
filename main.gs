@@ -36,6 +36,10 @@ function doPost(e) {
     notify(reply_token); // チュートリアル開始
     sublogs.appendRow(['スタート']);
   }
+  else if (messageText == '> 一週間予定検索'){
+    week(reply_token);
+    sublogs.appendRow(['説明_week']);
+  }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
     judgetoolno(splittext,reply_token); // 配列0番目検証関数へ移行
@@ -169,7 +173,7 @@ function notify(reply_token) {
         'type': 'text',
         'text': buildingmsg
         },
-        {
+        /*{
         'type': 'text',
         'text': ex1
         },
@@ -180,7 +184,7 @@ function notify(reply_token) {
         {
         'type': 'text',
         'text': ex3
-        }
+        }*/
       ],
     }),
   }
