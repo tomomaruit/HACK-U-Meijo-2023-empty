@@ -33,8 +33,20 @@ function doPost(e) {
   }
   //メッセージ解析してチュートリアルを始めるか解析
   if (messageText == '> スタート'){ // 「スタート」と入力されたら
-    notify(reply_token); // チュートリアル開始
+    notify1(reply_token); // チュートリアル開始
     sublogs.appendRow(['スタート']);
+  }
+  ifelse(messageText == '> 教室の一週間予定検索'){//「教室の一週間予定検索」と入力されたら
+    notify1(reply_token); // 教室の一週間予定検索の解説開始
+    sublogs.appendRow(['教室の一週間予定検索の使用方法']);
+  }
+  ifelse(messageText == '> 空き教室検索'){//「空き教室検索」と入力されたら
+    notify2(reply_token); // 空き教室検索の解説開始
+    sublogs.appendRow(['空き教室検索の使用方法']);
+  }
+  ifelse(messageText == '> シラバス検索'){//「シラバス検索」と入力されたら
+    notify3(reply_token); // シラバス検索の解説開始
+    sublogs.appendRow(['シラバス検索の使用方法']);
   }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
@@ -148,9 +160,6 @@ function notify(reply_token) {
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
-  const ex1 = set_sheet.getRange("B3").getValue();
-  const ex2 = set_sheet.getRange("B4").getValue();
-  const ex3 = set_sheet.getRange("B5").getValue();
   // LINE側の要件に合わせる
   const option = {
     'headers': {
@@ -169,24 +178,100 @@ function notify(reply_token) {
         'type': 'text',
         'text': buildingmsg
         },
-        {
-        'type': 'text',
-        'text': ex1
-        },
-        {
-        'type': 'text',
-        'text': ex2
-        },
-        {
-        'type': 'text',
-        'text': ex3
-        }
       ],
     }),
   }
   UrlFetchApp.fetch(LINE_URL,option);
   return;
 }
+
+function notify1(reply_token) {
+  const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
+  const buildingmsg = set_sheet.getRange("B2").getValue();
+  const ex1 = set_sheet.getRange("B3").getValue();
+  // LINE側の要件に合わせる
+  const option = {
+    'headers': {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ' + LINE_TOKEN,
+    },
+    'method': 'post',
+    'payload': JSON.stringify({
+      'replyToken': reply_token,
+      'messages': [
+        {
+        'type': 'text',
+        'text': ex1
+        },
+        {
+        'type': 'text',
+        'text': buildingmsg
+        },
+      ],
+    }),
+  }
+  UrlFetchApp.fetch(LINE_URL,option);
+  return;
+}
+
+function notify2(reply_token) {
+  const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
+  const buildingmsg = set_sheet.getRange("B2").getValue();
+  const ex2 = set_sheet.getRange("B4").getValue();
+  // LINE側の要件に合わせる
+  const option = {
+    'headers': {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ' + LINE_TOKEN,
+    },
+    'method': 'post',
+    'payload': JSON.stringify({
+      'replyToken': reply_token,
+      'messages': [
+        {
+        'type': 'text',
+        'text': ex2
+        },
+        {
+        'type': 'text',
+        'text': buildingmsg
+        },
+      ],
+    }),
+  }
+  UrlFetchApp.fetch(LINE_URL,option);
+  return;
+}
+
+function notify3(reply_token) {
+  const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
+  const buildingmsg = set_sheet.getRange("B2").getValue();
+  const ex3 = set_sheet.getRange("B5").getValue();
+  // LINE側の要件に合わせる
+  const option = {
+    'headers': {
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ' + LINE_TOKEN,
+    },
+    'method': 'post',
+    'payload': JSON.stringify({
+      'replyToken': reply_token,
+      'messages': [
+        {
+        'type': 'text',
+        'text': ex3
+        },
+        {
+        'type': 'text',
+        'text': buildingmsg
+        },
+      ],
+    }),
+  }
+  UrlFetchApp.fetch(LINE_URL,option);
+  return;
+}
+
 
 // エラー用に使用する関数
 function error(errorcode,reply_token) {
