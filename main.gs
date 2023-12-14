@@ -101,7 +101,7 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); 
         let message = result.join('\n'); 
-        sendLINE(reply_token,message); 
+        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果です\n' + message); 
       }
     }
   }
