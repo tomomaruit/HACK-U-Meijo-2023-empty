@@ -36,15 +36,15 @@ function doPost(e) {
     notify1(reply_token); // チュートリアル開始
     sublogs.appendRow(['スタート']);
   }
-  ifelse(messageText == '> 教室の一週間予定検索'){//「教室の一週間予定検索」と入力されたら
+  else if(messageText == '> 教室の一週間予定検索'){//「教室の一週間予定検索」と入力されたら
     notify1(reply_token); // 教室の一週間予定検索の解説開始
     sublogs.appendRow(['教室の一週間予定検索の使用方法']);
   }
-  ifelse(messageText == '> 空き教室検索'){//「空き教室検索」と入力されたら
+  else if(messageText == '> 空き教室検索'){//「空き教室検索」と入力されたら
     notify2(reply_token); // 空き教室検索の解説開始
     sublogs.appendRow(['空き教室検索の使用方法']);
   }
-  ifelse(messageText == '> シラバス検索'){//「シラバス検索」と入力されたら
+  else if(messageText == '> シラバス検索'){//「シラバス検索」と入力されたら
     notify3(reply_token); // シラバス検索の解説開始
     sublogs.appendRow(['シラバス検索の使用方法']);
   }
