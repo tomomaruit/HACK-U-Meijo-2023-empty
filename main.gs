@@ -101,7 +101,7 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); 
         let message = result.join('\n'); 
-        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果です\n' + '()内は収容可能人数です' + message); 
+        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果です\n' + '()内は収容可能人数です\n' + message); 
       }
     }
   }
@@ -132,7 +132,7 @@ function judgetoolno(splittext,reply_token){
         sublogs.appendRow(result); 
         let codemessage = result.join('\n'); 
         const message = 'https://gkmsyllabus.meijo-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2023&value(semekikn)=1&value(kougicd)=' + codemessage
-        sendLINE(reply_token,message); 
+        sendLINE(reply_token,sheetname[i] + ',' + whatdatetime + ',' + roomname + 'における\nシラバス検索結果はこちらです' +  message); 
       }
     }
   }
