@@ -40,6 +40,10 @@ function doPost(e) {
     week(reply_token);
     sublogs.appendRow(['説明_week']);
   }
+  else if (messageText == '> 空き教室検索'){
+    empty(reply_token);
+    sublogs.appendRow(['説明_empty']);
+  }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
     judgetoolno(splittext,reply_token); // 配列0番目検証関数へ移行
