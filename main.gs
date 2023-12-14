@@ -32,7 +32,7 @@ function doPost(e) {
     return;
   }
   //メッセージ解析してチュートリアルを始めるか解析
-  if (messageText == 'スタート'){ // 「スタート」と入力されたら
+  if (messageText == '> スタート'){ // 「スタート」と入力されたら
     notify(reply_token); // チュートリアル開始
     sublogs.appendRow(['スタート']);
   }
