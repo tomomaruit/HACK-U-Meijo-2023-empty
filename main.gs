@@ -113,7 +113,7 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); 
         let message = result.join('\n'); 
-        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果です\n' + '()内は収容可能人数です\n' + message); 
+        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果\n' + '()内は収容可能人数です\n' + message); 
       }
     }
   }
