@@ -82,7 +82,7 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); // 検索結果をログ出力
         let message = result.join('\n'); // 配列に入ったままでは送信できないので、改行してメッセージとして送信できる形にする
-        sendLINE(reply_token,sheetname[i] + " " + roomname + "の検索結果です\n" + message); // 返信実行関数起動
+        sendLINE(reply_token,sheetname[i] + " " + roomname + "の検索結果です\n" + message + ' の曜日時間が空いています'); // 返信実行関数起動
       }
     }
   }
