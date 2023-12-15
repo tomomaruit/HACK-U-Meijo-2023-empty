@@ -46,7 +46,7 @@ function doPost(e) {
   }
   else if (messageText == '> シラバス検索'){
     syllabus(reply_token);
-    sublogs.appendRow(['説明_empty']);
+    sublogs.appendRow(['説明_syllabus']);
   }
   else{ // そうでなければ
     const splittext = messageText.split("\n"); // 配列に分ける
@@ -135,7 +135,7 @@ function judgetoolno(splittext,reply_token){
             for (k = 2; k <= lastrow ; k ++){ // 縦方向検索に切替
               let sheetclasscode = searchsheet.getRange(k,2).getValue(); // 検索対象セルの内容定義
               if (sheetclasscode == roomname){ // 部屋番号一致
-                let classno = searchsheet.getRange(k,j).getValue(); // 同行の教室名取得
+                let classno = searchsheet.getRange(k,j).getValue(); // 同行の授業コード取得
                 result.push(classno);
               }
             }
@@ -144,7 +144,7 @@ function judgetoolno(splittext,reply_token){
         sublogs.appendRow(result); 
         let codemessage = result.join('\n'); 
         const message = 'https://gkmsyllabus.meijo-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2023&value(semekikn)=1&value(kougicd)=' + codemessage
-        sendLINE(reply_token,sheetname[i] + ',' + whatdatetime + ',' + roomname + 'における\nシラバス検索結果はこちらです' +  message); 
+        sendLINE(reply_token,sheetname[i] + ',' + whatdatetime + ',' + roomname + 'における\nシラバス検索結果はこちらです\n' +  message); 
       }
     }
   }
