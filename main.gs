@@ -143,14 +143,21 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); 
         let codemessage = result.join('\n'); 
-        const message = 'https://gkmsyllabus.meijo-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2023&value(semekikn)=1&value(kougicd)=' + codemessage
+        if (codemessage != ''){
+          const message = 'https://gkmsyllabus.meijo-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2023&value(semekikn)=1&value(kougicd)=' + codemessage
         sendLINE(reply_token,sheetname[i] + ',' + whatdatetime + ',' + roomname + 'における\nシラバス検索結果はこちらです\n' +  message); 
+        }
+        else{
+          errorcode = '講義コードが取得できませんでした．';
+          error(errorcode,reply_token);
+        }
+        
       }
     }
   }
 
   else {
-    errorcode = 100;
+    errorcode = '入力形式が正しくありません.';
     error(errorcode,reply_token);
   }
 }
@@ -350,7 +357,7 @@ function error(errorcode,reply_token) {
       'messages': [
         {
         'type': 'text',
-        'text': 'エラーが発生しました。最初からやり直してください。\nエラーコード:'+ errorcode
+        'text': 'エラーが発生しました。最初からやり直してください。\nエラー内容:'+ errorcode
         },
       ],
     }),
