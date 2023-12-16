@@ -26,7 +26,7 @@ function doPost(e) {
   //ログ用のを日付生成
   let date= new Date();
   logs.appendRow([date,userID,messageText]); // 日時、userID、送信された内容をログとして残す
-  sublogs.appendRow([date,userID]); // 日時、userID、送信された内容をログとして残す
+  sublogs.appendRow([date,'userID']); // 日時、userID、送信された内容をログとして残す
 
   if (typeof reply_token === 'underfined') {
     return;
@@ -113,7 +113,7 @@ function judgetoolno(splittext,reply_token){
         }
         sublogs.appendRow(result); 
         let message = result.join('\n'); 
-        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果\n' + '()内は収容可能人数です\n' + message); 
+        sendLINE(reply_token,sheetname[i] + ' ' + whatdatetime + 'の空き教室検索結果\n' + '()内は収容人数または講義室情報です\n' + message); 
       }
     }
   }
