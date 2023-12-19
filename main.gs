@@ -190,15 +190,27 @@ function notify(reply_token) {
         },
         /*{
         'type': 'text',
-        'text': ex1
+        'text': ex1_1
         },
         {
         'type': 'text',
-        'text': ex2
+        'text': ex1_2
         },
         {
         'type': 'text',
-        'text': ex3
+        'text': ex2_1
+        },
+        {
+        'type': 'text',
+        'text': ex2_2
+        },
+        {
+        'type': 'text',
+        'text': ex3_1
+        },
+        {
+        'type': 'text',
+        'text': ex3_2
         }*/
       ],
     }),
@@ -235,16 +247,27 @@ function week(reply_token) {
         },*/
         {
         'type': 'text',
-        'text': ex1
-        },
-        /*
-        {
-        'type': 'text',
-        'text': ex2
+        'text': ex1_1
         },
         {
         'type': 'text',
-        'text': ex3
+        'text': ex1_2
+        },
+        /*{
+        'type': 'text',
+        'text': ex2_1
+        },
+        {
+        'type': 'text',
+        'text': ex2_2
+        },
+        {
+        'type': 'text',
+        'text': ex3_1
+        },
+        {
+        'type': 'text',
+        'text': ex3_2
         }*/
       ],
     }),
@@ -281,16 +304,27 @@ function empty(reply_token) {
         },
         {
         'type': 'text',
-        'text': ex1
+        'text': ex1_1
+        },
+        {
+        'type': 'text',
+        'text': ex1_2
         },*/
         {
         'type': 'text',
-        'text': ex2
+        'text': ex2_1
         },
-        /*
         {
         'type': 'text',
-        'text': ex3
+        'text': ex2_2
+        },
+        /*{
+        'type': 'text',
+        'text': ex3_1
+        },
+        {
+        'type': 'text',
+        'text': ex3_2
         }*/
       ],
     }),
@@ -327,15 +361,27 @@ function syllabus(reply_token) {
         },
         {
         'type': 'text',
-        'text': ex1
+        'text': ex1_1
         },
         {
         'type': 'text',
-        'text': ex2
+        'text': ex1_2
+        },
+        {
+        'type': 'text',
+        'text': ex2_1
+        },
+        {
+        'type': 'text',
+        'text': ex2_2
         },*/
         {
         'type': 'text',
-        'text': ex3
+        'text': ex3_1
+        },
+        {
+        'type': 'text',
+        'text': ex3_2
         }
       ],
     }),
