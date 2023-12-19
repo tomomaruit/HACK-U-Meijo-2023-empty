@@ -167,10 +167,12 @@ function notify(reply_token) {
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
-  const ex1 = set_sheet.getRange("B3").getValue();
-  const ex2 = set_sheet.getRange("B4").getValue();
-  const ex3 = set_sheet.getRange("B5").getValue();
-  // LINE側の要件に合わせる
+  const ex1_1 = set_sheet.getRange("B3").getValue();
+  const ex1_2 = set_sheet.getRange("B4").getValue();
+  const ex2_1 = set_sheet.getRange("B5").getValue();
+  const ex2_2 = set_sheet.getRange("B6").getValue();
+  const ex3_1 = set_sheet.getRange("B7").getValue();
+  const ex3_2 = set_sheet.getRange("B8").getValue();  // LINE側の要件に合わせる
   const option = {
     'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -224,10 +226,12 @@ function week(reply_token) {
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
-  const ex1 = set_sheet.getRange("B3").getValue();
-  const ex2 = set_sheet.getRange("B4").getValue();
-  const ex3 = set_sheet.getRange("B5").getValue();
-  // LINE側の要件に合わせる
+  const ex1_1 = set_sheet.getRange("B3").getValue();
+  const ex1_2 = set_sheet.getRange("B4").getValue();
+  const ex2_1 = set_sheet.getRange("B5").getValue();
+  const ex2_2 = set_sheet.getRange("B6").getValue();
+  const ex3_1 = set_sheet.getRange("B7").getValue();
+  const ex3_2 = set_sheet.getRange("B8").getValue();  // LINE側の要件に合わせる
   const option = {
     'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -281,10 +285,12 @@ function empty(reply_token) {
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
-  const ex1 = set_sheet.getRange("B3").getValue();
-  const ex2 = set_sheet.getRange("B4").getValue();
-  const ex3 = set_sheet.getRange("B5").getValue();
-  // LINE側の要件に合わせる
+  const ex1_1 = set_sheet.getRange("B3").getValue();
+  const ex1_2 = set_sheet.getRange("B4").getValue();
+  const ex2_1 = set_sheet.getRange("B5").getValue();
+  const ex2_2 = set_sheet.getRange("B6").getValue();
+  const ex3_1 = set_sheet.getRange("B7").getValue();
+  const ex3_2 = set_sheet.getRange("B8").getValue();  // LINE側の要件に合わせる
   const option = {
     'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
@@ -338,10 +344,12 @@ function syllabus(reply_token) {
   const set_sheet = ss.getSheetByName('ユーザ説明用'); // 設定シート定義
   const msg = set_sheet.getRange("B1").getValue();
   const buildingmsg = set_sheet.getRange("B2").getValue();
-  const ex1 = set_sheet.getRange("B3").getValue();
-  const ex2 = set_sheet.getRange("B4").getValue();
-  const ex3 = set_sheet.getRange("B5").getValue();
-  // LINE側の要件に合わせる
+  const ex1_1 = set_sheet.getRange("B3").getValue();
+  const ex1_2 = set_sheet.getRange("B4").getValue();
+  const ex2_1 = set_sheet.getRange("B5").getValue();
+  const ex2_2 = set_sheet.getRange("B6").getValue();
+  const ex3_1 = set_sheet.getRange("B7").getValue();
+  const ex3_2 = set_sheet.getRange("B8").getValue();  // LINE側の要件に合わせる
   const option = {
     'headers': {
       'Content-Type': 'application/json; charset=UTF-8',
