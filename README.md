@@ -1,5 +1,7 @@
 # HACK-U-Meijo-2023
 これは、「HACK U 名城大学 2023 empty」 のチームリポジトリです。
+https://youtu.be/uXpLmtnFWMI?t=698&si=lpNytWksoLMQ9ySI
+
 # 作品の概要
 私たちは、名城大学における「空き教室」を検索することができるLINE公式アカウント「空き教室検索くん」を制作しました。  
 ![icon](empty-icon-new.png)
